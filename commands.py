@@ -49,7 +49,7 @@ class SaveWindowSettingsCommand(ConfigBaseWindowCommand):
         set_status('Window configuration saved to defaults.')
 
 
-class SetWindowSettingCommand(PsqlBaseWindowCommand):  
+class SetWindowSettingCommand(ConfigBaseWindowCommand):  
     def description(self):
         return 'Uses {"name": name, "value": value} to set the window setting. It prompts if either argument is missing.'
     
