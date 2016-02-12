@@ -24,6 +24,7 @@ from sublime import save_settings, load_settings, status_message, active_window,
 from sublime_plugin import TextCommand, WindowCommand, EventListener
 from collections import MutableMapping 
 from abc import ABCMeta
+from threading import Lock
 
 def set_status(msg):
     set_timeout(lambda:status_message(msg))
@@ -86,6 +87,7 @@ class ConfigSettings(MutableMapping):
         self.__defaults = {}
         self.__userspecified = {}
         self.__reload()
+        self.output_lock = Lock()
         kwargs.pop('window', None)
         self.update(dict(*args, **kwargs))
 
