@@ -85,7 +85,6 @@ class ConfigSettings(MutableMapping):
     def __init__(self, *args, **kwargs):
         self.__defaults = {}
         self.__userspecified = {}
-        self.output_lock = Lock()
         self.__reload()
         kwargs.pop('window', None)
         self.update(dict(*args, **kwargs))
